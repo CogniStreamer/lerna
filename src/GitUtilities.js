@@ -1,6 +1,7 @@
 import ChildProcessUtilities from "./ChildProcessUtilities";
 import logger from "./logger";
 import escapeArgs from "command-join";
+import { EOL } from "os";
 
 export default class GitUtilities {
   @logger.logifySync()
@@ -20,8 +21,7 @@ export default class GitUtilities {
 
   @logger.logifySync()
   static commit(message) {
-    // Use echo to allow multi\nline strings.
-    ChildProcessUtilities.execSync("git commit -m \"$(echo \"" + message + "\")\"");
+    ChildProcessUtilities.execSync("git commit" + message.split(EOL).map(line => ` -m "${line}"`).join(''));
   }
 
   @logger.logifySync()

@@ -53,7 +53,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -154,7 +154,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-2/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
-          { args: ["git commit -m \"$(echo \"Publish" + EOL + EOL + " - package-1@1.0.1" + EOL + " - package-2@1.1.0" + EOL + " - package-3@2.0.0" + EOL + " - package-4@1.1.0\")\""] },
+          { args: [`git commit -m "Publish" -m "" -m " - package-1@1.0.1" -m " - package-2@1.1.0" -m " - package-3@2.0.0" -m " - package-4@1.1.0"`] },
           { args: ["git tag package-1@1.0.1"] },
           { args: ["git tag package-2@1.1.0"] },
           { args: ["git tag package-3@2.0.0"] },
@@ -517,7 +517,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
       ]);
@@ -647,7 +647,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -715,7 +715,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -822,7 +822,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -913,7 +913,7 @@ describe("PublishCommand", () => {
         [ChildProcessUtilities, "execSync", {}, [
           { args: ["git add " + escapeArgs(path.join(testDir, "lerna.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-1/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -974,7 +974,7 @@ describe("PublishCommand", () => {
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-         { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+         { args: [`git commit -m "v1.0.1"`] },
          { args: ["git tag v1.0.1"] }
        ]],
        [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -1072,7 +1072,7 @@ describe("PublishCommand", () => {
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-         { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+         { args: [`git commit -m "v1.0.1"`] },
          { args: ["git tag v1.0.1"] }
        ]],
        [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -1175,7 +1175,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-          { args: ["git commit -m \"$(echo \"v1.0.1\")\""] },
+          { args: [`git commit -m "v1.0.1"`] },
           { args: ["git tag v1.0.1"] }
         ]],
         [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -1275,7 +1275,7 @@ describe("PublishCommand", () => {
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
          { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-5/package.json"))] },
-         { args: ["git commit -m \"$(echo \"A custom publish message\")\""] },
+         { args: [`git commit -m "A custom publish message"`] },
          { args: ["git tag v1.0.1"] }
        ]],
        [ChildProcessUtilities, "exec", { nodeCallback: true }, [
@@ -1377,7 +1377,7 @@ describe("PublishCommand", () => {
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-2/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-3/package.json"))] },
           { args: ["git add " + escapeArgs(path.join(testDir, "packages/package-4/package.json"))] },
-          { args: ["git commit -m \"$(echo \"A custom publish message\")\""] },
+          { args: [`git commit -m "A custom publish message"`] },
           { args: ["git tag package-1@1.0.1"] },
           { args: ["git tag package-2@1.1.0"] },
           { args: ["git tag package-3@2.0.0"] },
