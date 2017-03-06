@@ -1,7 +1,10 @@
 import ChildProcessUtilities from "./ChildProcessUtilities";
+import FileSystemUtilities from "./FileSystemUtilities";
 import logger from "./logger";
 import escapeArgs from "command-join";
-import { EOL } from "os";
+import { EOL, tmpdir as getTempDirectory } from "os";
+import path from 'path';
+import util from 'util';
 
 export default class GitUtilities {
   @logger.logifySync()
@@ -21,7 +24,18 @@ export default class GitUtilities {
 
   @logger.logifySync()
   static commit(message) {
-    ChildProcessUtilities.execSync("git commit" + message.split(EOL).map(line => ` -m "${line}"`).join(''));
+    if (message.indexOf(EOL) > -1) {
+      const tmpDir = path.join(getTempDirectory(), 'LernaTempFiles');
+      const tmpFilePath = path.join(tmpDir, `commitMessage_${new Date().getTime()}.txt`);
+
+      if (!FileSystemUtilities.existsSync(tmpDir)) FileSystemUtilities.mkdirSync(tmpDir);
+
+      FileSystemUtilities.writeFileSync(tmpFilePath, message);
+      ChildProcessUtilities.execSync("git commit -F " + tmpFilePath);
+      FileSystemUtilities.unlinkSync(tmpFilePath);
+    } else {
+      ChildProcessUtilities.execSync("git commit -m " + message);
+    }
   }
 
   @logger.logifySync()
